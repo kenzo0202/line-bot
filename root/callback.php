@@ -78,9 +78,8 @@ foreach ($events as $event) {
             error_log($response->getHTTPStatus() . ' ' . $response->getBody());
         }
 
-        sleep(1000);
 
-        $contenturl = "https://line-bot0202.herokuapp.com/video/sample.mp4";
+        $contenturl = "https://line-bot0202.herokuapp.com/video/pen.mp4";
         $imageurl = "http://hakomori.net/wp-content/uploads/yu_google1.jpg";
 
         $video_builder = new \LINE\LINEBot\MessageBuilder\VideoMessageBuilder($contenturl,$imageurl);
