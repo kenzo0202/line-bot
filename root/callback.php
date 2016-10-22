@@ -95,12 +95,20 @@ foreach ($events as $event) {
 
         $bot->replyMessage($reply_token,$location_builder);
 
-
     }elseif($event instanceof AudioMessage){
+
 
     }elseif($event instanceof ImageMessage){
 
+    }elseif ($event instanceof \LINE\LINEBot\Event\FollowEvent) {
+
+        $profile_data = $bot->getProfile($event->getUserId())->getJSONDecodedBody();
+        error_log("8P BOT FOLLOWED: {$event->getUserId()}: {$profile_data['displayName']}");
+        $reply_token = $event->getReplyToken();
+        $bot->replyText($reply_token, "友達してくれてありがとう！！".$profile_data['displayName']);
     }
+
+
 }
 
 echo "OK";
