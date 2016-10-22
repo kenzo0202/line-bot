@@ -72,7 +72,7 @@ foreach ($events as $event) {
         if ($response->isSucceeded()) {
             $videourl = __DIR__.'/../video/sample.mp4';
             $videosource = fopen($videourl,'a');
-            fwrite($videosource, $response);
+            fwrite($videosource, $response->getRawBody());
             fclose($videosource);
         } else {
             error_log($response->getHTTPStatus() . ' ' . $response->getBody());
