@@ -99,13 +99,35 @@ foreach ($events as $event) {
 
 
     }elseif($event instanceof ImageMessage){
+        $reply_token = $event->getReplyToken();
+        $columns = [];
+        $items = [0,1,2];
+        foreach ($items as $item) {
+            $uriaction_builder = new LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("ここを押してね","https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg");
+            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("ここを押してね","1を選ぶ");
+            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("ここを押してね","3を選ぶ");
 
-    }elseif ($event instanceof \LINE\LINEBot\Event\FollowEvent) {
+
+            //カルーセルのカラムを作成する
+            $colunm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder(
+                "今書いて欲しい記事",
+                "ここにあるものから選んでね！",
+                "https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg",
+                [$uriaction_builder,$message_builder,$postback_builder]);
+
+            $columns[] =  $colunm;
+        }
+        
+        $carouselbuilders = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+        $templatemessage = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilders);
+
+        $bot->replyMessage($reply_token,$templatemessage);
+    }elseif ($event instanceof FollowEvent) {
 
         $profile_data = $bot->getProfile($event->getUserId())->getJSONDecodedBody();
         error_log("8P BOT FOLLOWED: {$event->getUserId()}: {$profile_data['displayName']}");
         $reply_token = $event->getReplyToken();
-        $bot->replyText($reply_token, "友達してくれてありがとう！！".$profile_data['displayName']);
+        $bot->replyText($reply_token, "友達追加してくれてありがとう！！".$profile_data['displayName']);
     }
 
 
