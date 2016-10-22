@@ -70,9 +70,10 @@ foreach ($events as $event) {
 
         $response = $bot->getMessageContent($message_id);
         if ($response->isSucceeded()) {
-            $videofile = __DIR__.'/../video/sample.mp4';
-            fwrite($videofile, $response->getBody());
-            fclose($videofile);
+            $videourl = __DIR__.'/../video/sample.mp4';
+            $videosource = fopen($videourl,'a');
+            fwrite($videosource, $response);
+            fclose($videosource);
         } else {
             error_log($response->getHTTPStatus() . ' ' . $response->getBody());
         }

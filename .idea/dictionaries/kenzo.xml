@@ -2,6 +2,8 @@
   <dictionary name="kenzo">
     <words>
       <w>videofile</w>
+      <w>videosource</w>
+      <w>videourl</w>
     </words>
   </dictionary>
 </component>
