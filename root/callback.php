@@ -78,6 +78,8 @@ foreach ($events as $event) {
             error_log($response->getHTTPStatus() . ' ' . $response->getBody());
         }
 
+        sleep(3000);
+
         $contenturl = "https://line-bot0202.herokuapp.com/video/sample.mp4";
         $imageurl = "http://hakomori.net/wp-content/uploads/yu_google1.jpg";
 
