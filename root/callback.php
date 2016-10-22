@@ -60,11 +60,22 @@ foreach ($events as $event) {
         $package_id = $event->getPackageId();
 
         $sticker_builder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($package_id,$sticker_id);
-        
+
         $bot->replyMessage($reply_token,$sticker_builder);
 
 
     }elseif ($event instanceof VideoMessage){
+        $reply_token = $event->getReplyToken();
+        $message_id = $event->getMessageId();
+
+        $response = $bot->getMessageContent($message_id);
+        if ($response->isSucceeded()) {
+            $videofile = __DIR__.'/../video/sample.mp4';
+            fwrite($videofile, $response->getBody());
+            fclose($videofile);
+        } else {
+            error_log($response->getHTTPStatus() . ' ' . $response->getBody());
+        }
 
     }elseif($event instanceof LocationMessage){
 

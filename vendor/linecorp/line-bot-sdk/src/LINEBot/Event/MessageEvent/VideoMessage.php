@@ -27,6 +27,7 @@ use LINE\LINEBot\Event\MessageEvent;
  */
 class VideoMessage extends MessageEvent
 {
+    
     /**
      * VideoMessage constructor.
      *
@@ -36,4 +37,5 @@ class VideoMessage extends MessageEvent
     {
         parent::__construct($event);
     }
+    
 }
