@@ -24,6 +24,7 @@ define("LINE_MESSAGING_API_CHANNEL_SECRET", '7ce26fb54a53c4d258e855b7f49d0c37');
 define("LINE_MESSAGING_API_CHANNEL_TOKEN", 'WGI2sHZrfhY94b4HurfkPmIINGpRw47EqBz3iJHOXtnloBAnZPlo6X293XM1RIUYuGMZJFWzCTXQkUvtDs7WKh7CbmbICOcOmp4m+ets5UMbOHPDerVwO+dlTagr7EaWQRTxuzM4z/dj1+z6jSwfWgdB04t89/1O/w1cDnyilFU=ISSUE');
 
 require __DIR__."/../vendor/autoload.php";
+require __DIR__."/func.php";
 
 $bot = new \LINE\LINEBot(
     new \LINE\LINEBot\HTTPClient\CurlHTTPClient(LINE_MESSAGING_API_CHANNEL_TOKEN),
@@ -54,6 +55,19 @@ foreach ($events as $event) {
         $reply_token = $event->getReplyToken();
         $text = $event->getText();
         $bot->replyText($reply_token, $text);
+
+        $name = "岡野健三";
+        $imageurl = "http://sample.co.jp";
+
+        //DBに挿入
+        $pdo = db_con();
+
+        $stmt = $pdo->prepare("INSERT INTO line_user_table (name, img_url) VALUES (:name,:img_url)");
+
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->bindValue(":img_url",$imageurl,PDO::PARAM_LOB);
+
+        $status = $stmt->execute();
     }elseif ($event instanceof StickerMessage){
         $reply_token = $event->getReplyToken();
         $sticker_id = $event->getStickerId();
@@ -118,8 +132,8 @@ foreach ($events as $event) {
             $columns[] =  $colunm;
         }
         
-        $carouselbuilders = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
-        $templatemessage = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilders);
+        $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+        $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilders);
 
         $bot->replyMessage($reply_token,$templatemessage);
     }elseif ($event instanceof FollowEvent) {
