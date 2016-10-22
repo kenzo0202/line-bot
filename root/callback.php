@@ -79,7 +79,7 @@ foreach ($events as $event) {
         }
 
         $contenturl = "https://line-bot0202.herokuapp.com/video/sample.mp4";
-        $imageurl = "http://i.gzn.jp/img/2015/10/29/copy-pasting-url-from-google/top.png";
+        $imageurl = "http://hakomori.net/wp-content/uploads/yu_google1.jpg";
 
         $video_builder = new \LINE\LINEBot\MessageBuilder\VideoMessageBuilder($contenturl,$imageurl);
         $bot ->replyMessage($reply_token,$video_builder);
