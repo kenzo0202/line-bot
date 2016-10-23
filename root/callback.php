@@ -158,21 +158,35 @@ foreach ($events as $event) {
 
         $text_builder1 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("友達追加してくれてありがとう！！".$profile_data['displayName']);
         $text_builder2 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("ぺっぴだよ~~。みんなに日々の日常や出来事をまとめて教えて欲しいんだ！！");
+        $text_builder3  = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("今欲しいまとめはこちら");
 
         $columns = [];
-        $items = [0,1,2];
+        $items = [
+            [
+                "title" => "渋谷のオススメファッション",
+                "subtitle" => "渋谷で流行っているお店を教えて欲しいな"
+            ],
+            [
+                "title" => "渋谷のオススメファッション",
+                "subtitle" => "渋谷で流行っているお店を教えて欲しいな"
+            ],
+            [
+                "title" => "渋谷のオススメファッション",
+                "subtitle" => "渋谷で流行っているお店を教えて欲しいな"
+            ]
+        ];
+
         foreach ($items as $item) {
-            $uriaction_builder = new LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("ここを押してね","https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg");
-            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("ここを押してね","1を選ぶ");
-            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("ここを押してね","3を選ぶ");
+            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("詳細を見る","1を選ぶ");
+            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("このまとめを書く","3を選ぶ");
 
 
             //カルーセルのカラムを作成する
             $colunm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder(
-                "今書いて欲しい記事",
-                "ここにあるものから選んでね！",
+                $item["title"],
+                $item["subtitle"],
                 "https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg",
-                [$uriaction_builder,$message_builder,$postback_builder]);
+                [$message_builder,$postback_builder]);
 
             $columns[] =  $colunm;
         }
