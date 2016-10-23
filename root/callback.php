@@ -52,10 +52,6 @@ $events = $bot->parseEventRequest($body, $signature);
 
 foreach ($events as $event) {
     if ($event instanceof TextMessage) {
-        $reply_token = $event->getReplyToken();
-        $text = $event->getText();
-        $bot->replyText($reply_token, $text);
-
         $name = "岡野健三";
         $imageurl = "http://sample.co.jp";
 
@@ -67,7 +63,14 @@ foreach ($events as $event) {
         $stmt->bindValue(":name",$name,PDO::PARAM_STR);
         $stmt->bindValue(":img_url",$imageurl,PDO::PARAM_LOB);
 
-        $status = $stmt->execute();
+        $stmt->execute();
+        
+        $reply_token = $event->getReplyToken();
+        $text = $event->getText();
+        $bot->replyText($reply_token, $text);
+
+
+
     }elseif ($event instanceof StickerMessage){
         $reply_token = $event->getReplyToken();
         $sticker_id = $event->getStickerId();
