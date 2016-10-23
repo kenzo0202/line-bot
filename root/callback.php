@@ -58,19 +58,18 @@ foreach ($events as $event) {
         if($response->isSucceeded()){
             //テキスト送付が成功したら
             $name = "岡野健三";
-            $imageurl = "http://sample.co.jp";
+            $img_url = "http://sample.co.jp";
 
             //DBに挿入
             $pdo = db_con();
 
-            $stmt = $pdo->prepare("INSERT INTO line_user_table (name, img_url) VALUES (:name,:img_url)");
+            $stmt = $pdo->prepare("INSERT INTO line_user_table (name,img_url) VALUES (:name,:img_url)");
 
             $stmt->bindValue(":name",$name,PDO::PARAM_STR);
-            $stmt->bindValue(":img_url",$imageurl,PDO::PARAM_LOB);
+            $stmt->bindValue(":img_url",$img_url,PDO::PARAM_STR);
 
             $stmt->execute();
         }
-
 
 
     }elseif ($event instanceof StickerMessage){
