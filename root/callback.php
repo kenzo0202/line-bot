@@ -165,17 +165,17 @@ foreach ($events as $event) {
             [
                 "title" => "渋谷のオススメグルメ",
                 "subtitle" => "渋谷で流行っているお店を教えて欲しいな",
-                "img_rul" => "http://s3-ap-northeast-1.amazonaws.com/curation-web/girlspress/matome/311/item/5045/6n8l52azvsxi4k03ph7120152530152508.jpeg"
+                "img_rul" => "https://d3ftecjsng6jy5.cloudfront.net/images/topic/1478/ce21c78040adc23e8594f9e854309f853bbc1d3f_56750a04314cf_p.jpeg"
             ],
             [
                 "title" => "渋谷のオススメファッション",
                 "subtitle" => "流行を先取り！！冬物コーデにオススメのお店を教えて欲しいな！",
-                "img_rul" => "http://besty.nao3.net/wp-content/uploads/2015/12/royal-party.jpg"
+                "img_rul" => "https://cdn.top.tsite.jp/static/top/sys/contents_image/media_image/030/908/595/30908595_0.jpeg"
             ],
             [
                 "title" => "渋谷のデートスポット",
                 "subtitle" => "渋谷でデートするならこれ！！ってお店を教えて欲しいな",
-                "img_rul" => "https://upload.wikimedia.org/wikipedia/commons/5/5c/Shibuya_109_Building_Tokyo_January_2006.jpg"
+                "img_rul" => "https://fanblogs.jp/riko0723/file/image/image-a8d47.jpeg"
             ]
         ];
 
