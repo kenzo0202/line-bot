@@ -182,8 +182,8 @@ foreach ($events as $event) {
         ];
 
         foreach ($items as $item) {
-            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("詳細を見る","1を選ぶ");
-            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("このまとめを書く","3を選ぶ");
+            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("詳細を見る","detail");
+            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("このまとめを書く","fashion");
 
 
             //カルーセルのカラムを作成する
@@ -214,7 +214,14 @@ foreach ($events as $event) {
             if(isset($data["yes"])){
                 $reply_token = $event->getReplyToken();
                 $bot->replyText($reply_token, "押されたよ！！");
-
+            }elseif (isset($data["fashion"])){
+                $reply_token = $event->getReplyToken();
+                $fashion_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ファッションだね！！今渋谷で流行しているファッションを教えて欲しいな");
+                $shop_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("お店の名前は？？");
+                $muiti_builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+                $muiti_builder->add($fashion_text);
+                $muiti_builder->add($shop_text);
+                $bot->replyMessage($reply_token,$muiti_builder);
             }
         }
     }
