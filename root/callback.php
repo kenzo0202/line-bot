@@ -134,6 +134,19 @@ foreach ($events as $event) {
 
 
     }elseif($event instanceof ImageMessage){
+        $image_id = $event->getMessageId();
+        $response = $bot->getMessageContent($image_id);
+
+        if ($response->isSucceeded()) {
+            $videourl = __DIR__.'/../img/sample.jpeg';
+            $videosource = fopen($videourl,'a');
+            fwrite($videosource, $response->getRawBody());
+            fclose($videosource);
+        } else {
+            error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
+        }
+
+
         $reply_token = $event->getReplyToken();
         $columns = [];
         $items = [0,1,2];
