@@ -163,16 +163,19 @@ foreach ($events as $event) {
         $columns = [];
         $items = [
             [
-                "title" => "渋谷のオススメファッション",
-                "subtitle" => "渋谷で流行っているお店を教えて欲しいな"
+                "title" => "渋谷のオススメグルメ",
+                "subtitle" => "渋谷で流行っているお店を教えて欲しいな",
+                "img_rul" => "http://s3-ap-northeast-1.amazonaws.com/curation-web/girlspress/matome/311/item/5045/6n8l52azvsxi4k03ph7120152530152508.jpeg"
             ],
             [
                 "title" => "渋谷のオススメファッション",
-                "subtitle" => "渋谷で流行っているお店を教えて欲しいな"
+                "subtitle" => "流行を先取り！！冬物コーデにオススメのお店を教えて欲しいな！",
+                "img_rul" => "http://besty.nao3.net/wp-content/uploads/2015/12/royal-party.jpg"
             ],
             [
-                "title" => "渋谷のオススメファッション",
-                "subtitle" => "渋谷で流行っているお店を教えて欲しいな"
+                "title" => "渋谷のデートスポット",
+                "subtitle" => "渋谷でデートするならこれ！！ってお店を教えて欲しいな",
+                "img_rul" => "https://upload.wikimedia.org/wikipedia/commons/5/5c/Shibuya_109_Building_Tokyo_January_2006.jpg"
             ]
         ];
 
@@ -185,7 +188,7 @@ foreach ($events as $event) {
             $colunm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder(
                 $item["title"],
                 $item["subtitle"],
-                "https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg",
+                $item["img_url"],
                 [$message_builder,$postback_builder]);
 
             $columns[] =  $colunm;
