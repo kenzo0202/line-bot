@@ -266,7 +266,46 @@ foreach ($events as $event) {
             parse_str($query,$data);
             if(isset($data["yes"])){
                 $reply_token = $event->getReplyToken();
-                $bot->replyText($reply_token, "押されたよ！！");
+
+                $columns = [];
+                $items = [
+                    [
+                        "title" => "渋谷のオススメグルメ",
+                        "subtitle" => "渋谷で流行っているお店を教えて欲しいな",
+                        "img_url" => "https://d3ftecjsng6jy5.cloudfront.net/images/topic/1478/ce21c78040adc23e8594f9e854309f853bbc1d3f_56750a04314cf_p.jpeg"
+                    ],
+                    [
+                        "title" => "渋谷のオススメファッション",
+                        "subtitle" => "流行を先取り！！冬物コーデにオススメのお店を教えて欲しいな！",
+                        "img_url" => "https://cdn.top.tsite.jp/static/top/sys/contents_image/media_image/030/908/595/30908595_0.jpeg"
+                    ],
+                    [
+                        "title" => "渋谷のデートスポット",
+                        "subtitle" => "渋谷でデートするならこれ！！ってお店を教えて欲しいな",
+                        "img_url" => "https://fanblogs.jp/riko0723/file/image/image-a8d47.jpeg"
+                    ]
+                ];
+
+                foreach ($items as $item) {
+                    $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("詳細を見る","detail");
+                    $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("このまとめを書く","fashion");
+
+
+                    //カルーセルのカラムを作成する
+                    $colunm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder(
+                        $item["title"],
+                        $item["subtitle"],
+                        $item["img_url"],
+                        [$message_builder,$postback_builder]);
+
+                    $columns[] =  $colunm;
+                }
+
+                $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+                $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilder);
+
+                $bot->replyMessage($reply_token,$templatemessagebuilder);
+
             }elseif (isset($data["fashion"])){
                 $reply_token = $event->getReplyToken();
                 $fashion_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ファッションだね！！今渋谷で流行しているファッションを教えて欲しいな");
