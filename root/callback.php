@@ -61,6 +61,13 @@ foreach ($events as $event) {
             $muiti_builder->add($fashion_text);
             $muiti_builder->add($shop_text);
             $bot->replyMessage($reply_token,$muiti_builder);
+        }elseif (preg_match('/服/',$text)) {
+            $fashion_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text."なのか");
+            $shop_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("そのお店の写真を送ってよ！！");
+            $muiti_builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+            $muiti_builder->add($fashion_text);
+            $muiti_builder->add($shop_text);
+            $bot->replyMessage($reply_token,$muiti_builder);
         }else{
             $response = $bot->replyText($reply_token, $text);
         }
