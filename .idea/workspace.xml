@@ -32,13 +32,13 @@
       <file leaf-file-name="callback.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/root/callback.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="310" column="49" selection-start-line="310" selection-start-column="49" selection-end-line="310" selection-end-column="49" />
+            <state relative-caret-position="591">
+              <caret line="215" column="179" selection-start-line="215" selection-start-column="130" selection-end-line="215" selection-end-column="179" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#88#132#0#PHP" expanded="true" />
-                <marker date="1477201972000" expanded="true" signature="3126:3181" ph="INSERT INTO line_user_table... " />
-                <marker date="1477201972000" expanded="true" signature="3126:3351" ph="INSERT INTO line_user_table... " />
+                <marker date="1477205218000" expanded="true" signature="3126:3181" ph="INSERT INTO line_user_table... " />
+                <marker date="1477205218000" expanded="true" signature="3126:3351" ph="INSERT INTO line_user_table... " />
               </folding>
             </state>
           </provider>
@@ -107,8 +107,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="1440" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -368,7 +369,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="/Applications/XAMPP/xamppfiles/htdocs/engineer_map" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../line-deliver-bot" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="FullScreen" value="true" />
@@ -409,18 +410,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477150400812</updated>
-      <workItem from="1477150402189" duration="25723000" />
+      <workItem from="1477150402189" duration="26718000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25723000" />
+    <option name="totallyTimeSpent" value="26718000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="1440" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15138888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11354167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -734,15 +735,25 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/img/puppi.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/peppi.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/root/callback.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="310" column="49" selection-start-line="310" selection-start-column="49" selection-end-line="310" selection-end-column="49" />
+        <state relative-caret-position="591">
+          <caret line="215" column="179" selection-start-line="215" selection-start-column="130" selection-end-line="215" selection-end-column="179" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#88#132#0#PHP" expanded="true" />
-            <marker date="1477201972000" expanded="true" signature="3126:3181" ph="INSERT INTO line_user_table... " />
-            <marker date="1477201972000" expanded="true" signature="3126:3351" ph="INSERT INTO line_user_table... " />
+            <marker date="1477205218000" expanded="true" signature="3126:3181" ph="INSERT INTO line_user_table... " />
+            <marker date="1477205218000" expanded="true" signature="3126:3351" ph="INSERT INTO line_user_table... " />
           </folding>
         </state>
       </provider>

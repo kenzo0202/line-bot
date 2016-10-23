@@ -209,7 +209,7 @@ foreach ($events as $event) {
         error_log("8P BOT FOLLOWED: {$event->getUserId()}: {$profile_data['displayName']}");
         $reply_token = $event->getReplyToken();
 
-        $text_builder1 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("友達追加してくれてありがとう！！".$profile_data['displayName']);
+        $text_builder1 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("友達追加してくれてありがとう！！".$profile_data['pictureUrl']);
         $text_builder2 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("ぷっぴだよ~~。みんなに日々の日常や出来事をまとめて教えて欲しいんだ！！");
         $text_builder3  = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("今欲しいまとめはこちら");
 
@@ -306,7 +306,7 @@ foreach ($events as $event) {
 
                 $muiti_builder = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
 
-                $text_builder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("はいを洗濯したよ");
+                $text_builder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("はいを選択したよ");
                 $muiti_builder->add($templatemessagebuilder);
                 $muiti_builder->add($text_builder);
 
