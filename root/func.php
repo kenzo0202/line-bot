@@ -15,6 +15,8 @@ function db_con(){
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
+
+
     try{
         return new PDO($dsn,$username,$password,$driver_options);
     }catch(PDOException $e){
