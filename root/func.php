@@ -8,15 +8,15 @@
 
 //DB接続
 function db_con(){
-//    $dsn = "mysql:dbname=LAA0710186-sample;host=mysql113.phy.lolipop.lan;charset=utf8";
-//    $username = "LAA0710186";
-//    $password = "kenrad22";
-//    $driver_options = [
-//        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-//        PDO::ATTR_EMULATE_PREPARES => false,
-//    ];
+    $dsn = "mysql:dbname=heroku_ae525adeae5c87b;host=us-cdbr-iron-east-04.cleardb.net;charset=utf8";
+    $username = "bf863c5954ec03";
+    $password = "a3279383";
+    $driver_options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
     try{
-        return new PDO('mysql:host=mysql113.phy.lolipop.lan;dbname=LAA0710186-sample;charset=utf8;', 'LAA0710186', 'kenrad22');
+        return new PDO($dsn,$username,$password,$driver_options);
     }catch(PDOException $e){
 //        exit("DBconnectingerror:".$e->getMessage());
         echo $e->getMessage();
