@@ -156,8 +156,8 @@ foreach ($events as $event) {
         error_log("8P BOT FOLLOWED: {$event->getUserId()}: {$profile_data['displayName']}");
         $reply_token = $event->getReplyToken();
 
-        $bot->replyText($reply_token, "友達追加してくれてありがとう！！".$profile_data['displayName']);
-        $bot->replyText($reply_token, "ぺっぴだよ~~。みんなに日々の日常や出来事をまとめて教えて欲しいんだ！！");
+        $text_builder1 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("友達追加してくれてありがとう！！".$profile_data['displayName']);
+        $text_builder2 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("ぺっぴだよ~~。みんなに日々の日常や出来事をまとめて教えて欲しいんだ！！");
 
         $columns = [];
         $items = [0,1,2];
@@ -180,7 +180,11 @@ foreach ($events as $event) {
         $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
         $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilder);
 
-        $bot->replyMessage($reply_token,$templatemessagebuilder);
+        $muiti_builder = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+        $muiti_builder->add($text_builder1);
+        $muiti_builder->add($text_builder2);
+        $muiti_builder->add($templatemessagebuilder);
+        $bot->replyMessage($reply_token,$muiti_builder);
 
     }elseif ($event instanceof PostbackEvent){
         $query = $event->getPostbackData();
