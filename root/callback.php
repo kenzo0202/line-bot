@@ -54,22 +54,32 @@ foreach ($events as $event) {
     if ($event instanceof TextMessage) {
         $reply_token = $event->getReplyToken();
         $text = $event->getText();
-        $response = $bot->replyText($reply_token, $text);
-        if($response->isSucceeded()){
-            //テキスト送付が成功したら
-            $name = "岡野健三";
-            $img_url = "http://sample.co.jp";
-
-            //DBに挿入
-            $pdo = db_con();
-
-            $stmt = $pdo->prepare('INSERT INTO user (name,img_url) VALUES (:name,:img_url)');
-
-            $stmt->bindValue(":name",$name,PDO::PARAM_STR);
-            $stmt->bindValue(":img_url",$img_url,PDO::PARAM_STR);
-
-            $stmt->execute();
+        if (preg_match('/^beams$/i', $text)) {
+            $fashion_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text."だね？？");
+            $shop_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("どんな服が売ってるのかな？？");
+            $muiti_builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+            $muiti_builder->add($fashion_text);
+            $muiti_builder->add($shop_text);
+            $bot->replyMessage($reply_token,$muiti_builder);
+        }else{
+            $response = $bot->replyText($reply_token, $text);
         }
+//        データベース接続するとき
+//        if($response->isSucceeded()){
+//            //テキスト送付が成功したら
+//            $name = "岡野健三";
+//            $img_url = "http://sample.co.jp";
+//
+//            //DBに挿入
+//            $pdo = db_con();
+//
+//            $stmt = $pdo->prepare('INSERT INTO user (name,img_url) VALUES (:name,:img_url)');
+//
+//            $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+//            $stmt->bindValue(":img_url",$img_url,PDO::PARAM_STR);
+//
+//            $stmt->execute();
+//        }
 
 
     }elseif ($event instanceof StickerMessage){
