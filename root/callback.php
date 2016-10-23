@@ -63,7 +63,7 @@ foreach ($events as $event) {
             //DBに挿入
             $pdo = db_con();
 
-            $stmt = $pdo->prepare("INSERT INTO line_user_table (name,img_url) VALUES (:name,:img_url)");
+            $stmt = $pdo->prepare('INSERT INTO line_user_table (name,img_url) VALUES (:name,:img_url)');
 
             $stmt->bindValue(":name",$name,PDO::PARAM_STR);
             $stmt->bindValue(":img_url",$img_url,PDO::PARAM_STR);
