@@ -52,22 +52,24 @@ $events = $bot->parseEventRequest($body, $signature);
 
 foreach ($events as $event) {
     if ($event instanceof TextMessage) {
-        $name = "岡野健三";
-        $imageurl = "http://sample.co.jp";
-
-        //DBに挿入
-        $pdo = db_con();
-
-        $stmt = $pdo->prepare("INSERT INTO line_user_table (name, img_url) VALUES (:name,:img_url)");
-
-        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
-        $stmt->bindValue(":img_url",$imageurl,PDO::PARAM_LOB);
-
-        $stmt->execute();
-        
         $reply_token = $event->getReplyToken();
         $text = $event->getText();
-        $bot->replyText($reply_token, $text);
+        $response = $bot->replyText($reply_token, $text);
+        if($response->isSucceeded()){
+            //テキスト送付が成功したら
+            $name = "岡野健三";
+            $imageurl = "http://sample.co.jp";
+
+            //DBに挿入
+            $pdo = db_con();
+
+            $stmt = $pdo->prepare("INSERT INTO line_user_table (name, img_url) VALUES (:name,:img_url)");
+
+            $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+            $stmt->bindValue(":img_url",$imageurl,PDO::PARAM_LOB);
+
+            $stmt->execute();
+        }
 
 
 
@@ -92,7 +94,7 @@ foreach ($events as $event) {
             fwrite($videosource, $response->getRawBody());
             fclose($videosource);
         } else {
-            error_log($response->getHTTPStatus() . ' ' . $response->getBody());
+            error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
         }
 
 
@@ -136,15 +138,38 @@ foreach ($events as $event) {
         }
         
         $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
-        $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilders);
+        $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilder);
 
-        $bot->replyMessage($reply_token,$templatemessage);
+        //確認ボタン
+        // yes とは no はpostbackに格納されるデータ
+        $yes_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("はい","yes");
+        $no_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("いいえ","no");
+        $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("今日は記事を書きますか？",[$yes_btn,$no_btn]);
+        $confirm_msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("今日の記事",$confirm);
+
+        $muiti_builder = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+        $muiti_builder->add($templatemessagebuilder);
+        $muiti_builder->add($confirm_msg);
+        $bot->replyMessage($reply_token,$muiti_builder);
     }elseif ($event instanceof FollowEvent) {
 
         $profile_data = $bot->getProfile($event->getUserId())->getJSONDecodedBody();
         error_log("8P BOT FOLLOWED: {$event->getUserId()}: {$profile_data['displayName']}");
         $reply_token = $event->getReplyToken();
+
+
+
         $bot->replyText($reply_token, "友達追加してくれてありがとう！！".$profile_data['displayName']);
+    }elseif ($event instanceof PostbackEvent){
+        $query = $event->getPostbackData();
+        if($query){
+            parse_str($query,$data);
+            if(isset($data["yes"])){
+                $reply_token = $event->getReplyToken();
+                $bot->replyText($reply_token, "押されたよ！！");
+
+            }
+        }
     }
 
 
