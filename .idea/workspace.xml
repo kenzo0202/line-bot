@@ -32,8 +32,8 @@
       <file leaf-file-name="callback.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/root/callback.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="215" column="179" selection-start-line="215" selection-start-column="130" selection-end-line="215" selection-end-column="179" />
+            <state relative-caret-position="273">
+              <caret line="91" column="38" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="38" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#88#132#0#PHP" expanded="true" />
@@ -410,12 +410,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477150400812</updated>
-      <workItem from="1477150402189" duration="27219000" />
+      <workItem from="1477150402189" duration="27520000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27219000" />
+    <option name="totallyTimeSpent" value="27520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="0" width="1920" height="1080" extended-state="0" />
@@ -704,35 +704,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/linecorp/line-bot-sdk/src/LINEBot/MessageBuilder/ImageMessageBuilder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/linecorp/line-bot-sdk/src/LINEBot/MessageBuilder/ImagemapMessageBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-159">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/func.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
-          <folding>
-            <element signature="e#6#86#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/sample.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/img/puppi.jpeg">
@@ -745,10 +722,33 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/img/sample.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/func.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/linecorp/line-bot-sdk/src/LINEBot/MessageBuilder/ImageMessageBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/root/callback.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="215" column="179" selection-start-line="215" selection-start-column="130" selection-end-line="215" selection-end-column="179" />
+        <state relative-caret-position="273">
+          <caret line="91" column="38" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="38" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#88#132#0#PHP" expanded="true" />
