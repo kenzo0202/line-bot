@@ -91,12 +91,26 @@ foreach ($events as $event) {
 
     }elseif ($event instanceof StickerMessage){
         $reply_token = $event->getReplyToken();
-        $sticker_id = $event->getStickerId();
-        $package_id = $event->getPackageId();
+//        $sticker_id = $event->getStickerId();
+//        $package_id = $event->getPackageId();
+//
+//        $sticker_builder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($package_id,$sticker_id);
 
-        $sticker_builder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($package_id,$sticker_id);
+        $fashion_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ありがとう！！またよろしくね！！");
+        $muiti_builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+        //確認ボタン
+        // yes とは no はpostbackに格納されるデータ
+        $yes_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("はい","yes");
+        $no_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("いいえ","no");
+        $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("また記事を書きますか？",[$yes_btn,$no_btn]);
+        $confirm_msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("今日の記事",$confirm);
+        $muiti_builder->add($fashion_text);
+        $muiti_builder->add($confirm_msg);
 
-        $bot->replyMessage($reply_token,$sticker_builder);
+
+
+        $bot->replyMessage($reply_token,$muiti_builder);
+
 
 
     }elseif ($event instanceof VideoMessage){
@@ -147,39 +161,48 @@ foreach ($events as $event) {
         }
 
 
+
+
         $reply_token = $event->getReplyToken();
-        $columns = [];
-        $items = [0,1,2];
-        foreach ($items as $item) {
-            $uriaction_builder = new LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("ここを押してね","https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg");
-            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("ここを押してね","1を選ぶ");
-            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("ここを押してね","3を選ぶ");
-
-
-            //カルーセルのカラムを作成する
-            $colunm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder(
-                "今書いて欲しい記事",
-                "ここにあるものから選んでね！",
-                "https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg",
-                [$uriaction_builder,$message_builder,$postback_builder]);
-
-            $columns[] =  $colunm;
-        }
-        
-        $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
-        $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilder);
-
-        //確認ボタン
-        // yes とは no はpostbackに格納されるデータ
-        $yes_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("はい","yes");
-        $no_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("いいえ","no");
-        $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("今日は記事を書きますか？",[$yes_btn,$no_btn]);
-        $confirm_msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("今日の記事",$confirm);
-
-        $muiti_builder = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
-        $muiti_builder->add($templatemessagebuilder);
-        $muiti_builder->add($confirm_msg);
+        $fashion_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("しゃしん送ってくれてありがとう！！");
+        $shop_text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("最後に今の気持ちをスタンプで表して！！");
+        $muiti_builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+        $muiti_builder->add($fashion_text);
+        $muiti_builder->add($shop_text);
         $bot->replyMessage($reply_token,$muiti_builder);
+
+//        $columns = [];
+//        $items = [0,1,2];
+//        foreach ($items as $item) {
+//            $uriaction_builder = new LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("ここを押してね","https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg");
+//            $message_builder = new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("ここを押してね","1を選ぶ");
+//            $postback_builder = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("ここを押してね","3を選ぶ");
+//
+//
+//            //カルーセルのカラムを作成する
+//            $colunm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder(
+//                "今書いて欲しい記事",
+//                "ここにあるものから選んでね！",
+//                "https://cdn-images-1.medium.com/max/800/1*BUWSUWN8817VsQvuUNeBpA.jpeg",
+//                [$uriaction_builder,$message_builder,$postback_builder]);
+//
+//            $columns[] =  $colunm;
+//        }
+//
+//        $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+//        $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilder);
+//
+//        //確認ボタン
+//        // yes とは no はpostbackに格納されるデータ
+//        $yes_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("はい","yes");
+//        $no_btn = new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("いいえ","no");
+//        $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("今日は記事を書きますか？",[$yes_btn,$no_btn]);
+//        $confirm_msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("今日の記事",$confirm);
+//
+//        $muiti_builder = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+//        $muiti_builder->add($templatemessagebuilder);
+//        $muiti_builder->add($confirm_msg);
+//        $bot->replyMessage($reply_token,$muiti_builder);
     }elseif ($event instanceof FollowEvent) {
 
         $profile_data = $bot->getProfile($event->getUserId())->getJSONDecodedBody();
