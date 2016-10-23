@@ -304,7 +304,13 @@ foreach ($events as $event) {
                 $carouselbuilder = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
                 $templatemessagebuilder = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("代わりのテキスト",$carouselbuilder);
 
-                $bot->replyMessage($reply_token,$templatemessagebuilder);
+                $muiti_builder = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+
+                $text_builder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("はいを洗濯したよ");
+                $muiti_builder->add($templatemessagebuilder);
+                $muiti_builder->add($text_builder);
+
+                $bot->replyMessage($reply_token,$muiti_builder);
 
             }elseif (isset($data["fashion"])){
                 $reply_token = $event->getReplyToken();
