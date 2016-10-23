@@ -213,7 +213,7 @@ foreach ($events as $event) {
         $text_builder2 = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("ぺっぴだよ~~。みんなに日々の日常や出来事をまとめて教えて欲しいんだ！！");
         $text_builder3  = new LINE\LINEBot\MessageBuilder\TextMessageBuilder("今欲しいまとめはこちら");
 
-        $image_builder = new LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://line-bot0202.herokuapp.com/img/puppi.jpeg","https://line-bot0202.herokuapp.com/img/puppi.jpeg");
+        $image_builder = new LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://line-bot0202.herokuapp.com/img/peppi.jpeg","https://line-bot0202.herokuapp.com/img/peppi.jpeg");
 
         $columns = [];
         $items = [
